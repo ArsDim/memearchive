@@ -1,0 +1,801 @@
+/* ==========================================================================
+   1. ОБЩИЕ НАСТРОЙКИ И СБРОС СТИЛЕЙ
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "MS Sans Serif", Tahoma, Arial, sans-serif;
+}
+
+/* Дефолтный фон для главной страницы */
+body {
+         background: linear-gradient(135deg, #2b1055, #7597de);
+         min-height: 100vh;
+         display: flex;
+         flex-direction: column; 
+         align-items: center;
+         padding: 80px 20px 20px 20px;
+         overflow-x: hidden;
+        backdrop-filter: brightness(60%) blur(4px);
+}
+
+
+/* Специальные классы для фонов конкретных страниц (вешаются на тег <body>) */
+body.era-1990s-body {
+    background-color: #008080;
+    background-image: url('../img/1990.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+body.era-2010s-body {
+    background-color: #1a0933;
+    background-image: url('../img/2010.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+body.era-2020s-body {
+    background-color: #0f0c20;
+    background-image: url('../img/2020.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+/* ==========================================================================
+   2. СТИЛИ ШАПОК (ДЛЯ ВСЕХ СТРАНИЦ)
+   ========================================================================== */
+
+/* --- Вариант 1: Главная / Дефолтная ретро-шапка --- */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #c0c0c0;
+    border-bottom: 3px solid #808080;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 20px;
+    z-index: 99999; /* Максимальный приоритет, чтобы быть поверх всего */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.nav-btn {
+    background: #c0c0c0;
+    color: #000;
+    border: 2px solid;
+    border-color: #fff #0a0a0a #0a0a0a #fff;
+    padding: 4px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-btn:hover {
+    background: #dfdfdf;
+}
+
+.nav-btn.active, .nav-btn:active {
+    border-color: #0a0a0a #fff #fff #0a0a0a;
+    background: #e0e0e0;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+/* --- Вариант 2: Шапка 1990 --- */
+.top-navbar-1990 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #d4d0c8;
+    border-bottom: 2px solid #404040;
+    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080, 0 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 15px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    z-index: 99999;
+}
+
+.navbar-brand-1990 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #000000;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.navbar-brand-1990 img {
+    width: 16px;
+    height: 16px;
+}
+
+.navbar-buttons-1990 {
+    display: flex;
+    gap: 4px;
+}
+
+.nav-btn-1990 {
+    background: #d4d0c8;
+    color: #000000;
+    border: 1px solid #fff;
+    border-right-color: #404040;
+    border-bottom-color: #404040;
+    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.nav-btn-1990:active, .nav-btn-1990.active {
+    border: 1px solid #404040;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
+    background: #e4e0d8;
+    padding: 5px 11px 3px 13px;
+}
+
+/* --- Вариант 3: Шапка 2010 --- */
+.top-navbar-2010 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #2c3e50;
+    border-bottom: 3px solid #34495e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    z-index: 99999;
+}
+
+.navbar-brand-2010 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ecf0f1;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navbar-brand-2010 img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.9;
+}
+
+.navbar-buttons-2010 {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-btn-2010 {
+    background: transparent;
+    color: #bdc3c7;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    font-family: inherit;
+}
+
+.nav-btn-2010:hover {
+    color: #ffffff;
+    background: #1abc9c;
+}
+
+.nav-btn-2010.active {
+    color: #ffffff;
+    background: #e67e22;
+    font-weight: bold;
+}
+
+/* --- Вариант 4: Шапка 2020 --- */
+.top-navbar-2020 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 8, 20, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+}
+
+.navbar-brand-2020 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.navbar-brand-2020::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #00f2fe;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe;
+}
+
+.navbar-buttons-2020 {
+    display: flex;
+    gap: 6px;
+}
+
+.nav-btn-2020 {
+    background: rgba(255, 255, 255, 0.03);
+    color: #8b85a3;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+}
+
+.nav-btn-2020:hover {
+    color: #ffffff;
+    background: rgba(0, 242, 254, 0.1);
+    border-color: rgba(0, 242, 254, 0.4);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn-2020.active {
+    color: #ffffff;
+    background: rgba(255, 0, 127, 0.2);
+    border-color: rgba(255, 0, 127, 0.6);
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+    font-weight: 600;
+}
+
+
+/* ==========================================================================
+   3. КОНТЕНТНЫЕ БЛОКИ СТРАНИЦ
+   ========================================================================== */
+
+/* --- Главное Ретро-Окно (index.html) --- */
+.meme-container {
+    background: #c0c0c0; 
+    border: 2px solid;
+    border-color: #fff #0a0a0a #0a0a0a #fff;
+    box-shadow: inset 1px 1px #dfdfdf, inset -1px -1px #0a0a0a;
+    padding: 3px; 
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+    z-index: 10;
+}
+
+.window-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-bar {
+    background: linear-gradient(90deg, #000080, #1084d0); 
+    color: white;
+    padding: 3px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: move; 
+}
+
+.title-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none; 
+}
+
+.title-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.title-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.control-btn {
+    background: #c0c0c0;
+    color: #000;
+    border: 1px solid;
+    border-color: #fff #0a0a0a #0a0a0a #fff;
+    box-shadow: inset 1px 1px #dfdfdf;
+    width: 16px;
+    height: 14px;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-bar {
+    background: #c0c0c0;
+    display: flex;
+    gap: 15px;
+    padding: 4px 6px;
+    border-bottom: 2px solid #808080;
+    font-size: 12px;
+    color: #000;
+    user-select: none;
+}
+
+.menu-item {
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #000080;
+    color: #fff;
+}
+
+.welcome-container {
+    padding: 40px 20px; 
+    text-align: center;
+    background: #111;
+    border: 2px solid;
+    border-color: #0a0a0a #fff #fff #0a0a0a; 
+    margin: 10px;
+}
+
+.rainbow-text {
+    font-size: 3rem; 
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(
+        to right, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow-shift 4s linear infinite;
+    filter: drop-shadow(2px 2px 0px rgba(255, 255, 255, 0.2));
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+@keyframes rainbow-shift {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.site-description {
+    background: #c0c0c0;
+    color: #000;
+    border: 2px solid;
+    border-color: #fff #0a0a0a #0a0a0a #fff;
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: inset 1px 1px #dfdfdf;
+}
+
+.site-description h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-bottom: 2px dashed #808080;
+    padding-bottom: 5px;
+    color: #000080;
+}
+
+.site-description p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* --- Стили для эпохи 1990 --- */
+.era-1990s-content {
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.era-1990s-title {
+    color: #ffffff;
+    font-size: 26px;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px #000000;
+}
+
+.subtitle-1990s {
+    font-size: 13px;
+    color: #ffff00;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+}
+
+.retro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    justify-items: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.retro-card {
+    background: #d4d0c8;
+    border: 1px solid #fff;
+    border-right-color: #404040;
+    border-bottom-color: #404040;
+    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080, 0 4px 10px rgba(0,0,0,0.3);
+    border-radius: 0px;
+    padding: 15px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 190px;
+    box-sizing: border-box;
+}
+
+.retro-meme-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 12px;
+    text-align: center;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+}
+
+.retro-image-placeholder {
+    width: 110px;
+    height: 110px;
+    background: #808080;
+    border: 1px solid #404040;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.retro-label-btn {
+    background: #d4d0c8;
+    color: #000000;
+    border: 1px solid #fff;
+    border-right-color: #404040;
+    border-bottom-color: #404040;
+    box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+    padding: 4px 16px;
+    font-size: 11px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.retro-label-btn:active {
+    border: 1px solid #404040;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    box-shadow: inset 1px 1px #808080;
+}
+
+/* --- Стили для эпохи 2010 --- */
+.era-2010s-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.era-2010s-title {
+    color: #ffffff;
+    font-size: 28px;
+    font-family: 'Impact', sans-serif;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 3px 3px 0px #ff00ff;
+}
+
+.subtitle-2010s {
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: #00ffcc;
+    margin-bottom: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.galaxy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    justify-items: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.galaxy-card {
+    background: rgba(167, 54, 185, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 8px;
+    padding: 15px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 190px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    transition: transform 0.2s;
+}
+
+.galaxy-card:hover {
+    transform: scale(1.03);
+}
+
+.galaxy-meme-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 12px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.galaxy-image-placeholder {
+    width: 110px;
+    height: 110px;
+    background: #d9d9d9;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+    font-size: 11px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.galaxy-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.galaxy-label-btn {
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 5px 16px;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.galaxy-label-btn:hover {
+    background: #f0f0f0;
+}
+
+.galaxy-label-btn::before {
+    content: "⚙";
+    font-size: 11px;
+    color: #444;
+}
+
+/* --- Стили для эпохи 2020 --- */
+.era-2020s-content {
+    background: linear-gradient(135deg, rgba(15, 12, 32, 0.7) 0%, rgba(21, 16, 42, 0.75) 50%, rgba(6, 4, 9, 0.8) 100%);
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 20px rgba(123, 97, 255, 0.1), 0 20px 50px rgba(0,0,0,0.5);
+    margin: 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.era-2020s-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+    letter-spacing: -0.5px;
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #ffffff, #ff007f);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.subtitle-2020s {
+    font-size: 14px;
+    color: #8b85a3;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.modern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+    justify-items: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.glass-window {
+    background: rgba(27, 54, 119, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 15px 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 190px;
+    box-sizing: border-box;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.glass-window:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 242, 254, 0.4);
+    background: rgba(27, 54, 119, 0.8);
+}
+
+.modern-meme-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0 0 12px 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.modern-image-placeholder {
+    width: 110px;
+    height: 110px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.modern-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modern-label-btn {
+    background: #e6e6fa;
+    color: #222222;
+    border: 1px solid #b0b0d0;
+    border-radius: 6px;
+    padding: 5px 16px;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.modern-label-btn:hover {
+    background: #ffffff;
+}
+
+.modern-label-btn::before {
+    content: "⚙";
+    font-size: 11px;
+    color: #333;
+}
+
+
+/* ==========================================================================
+   4. АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   ========================================================================== */
+@media (max-width: 600px) {
+    body {
+        padding-top: 110px;
+    }
+    .top-navbar {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .rainbow-text {
+        font-size: 1.8rem;
+    }
+}

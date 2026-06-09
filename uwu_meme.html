@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UwU Meme - Эпоха Flash и Web 2.0</title>
+    <style>
+        /* ==========================================
+           ОБЩИЕ СТИЛИ И СТИЛИ ШАПКИ ИЗ ПРОШЛОГО 2000.html
+           ========================================== */
+        body.era-2000s-body {
+            margin: 0;
+            padding: 0;
+            background-color: #004e92;
+            background-image: url('img/2000.jpg'); /* Коллаж/фон из 2000-х на заднем плане */
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            padding-top: 60px; /* Отступ, чтобы контент не залезал под фиксированную шапку */
+        }
+
+        /* Синяя глянцевая шапка Windows XP / MSN */
+        .top-navbar-2000 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, #4a90e2 0%, #1157a8 100%);
+            border-bottom: 2px solid #083c7a;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            font-family: 'Tahoma', 'Lucida Grande', sans-serif;
+            box-sizing: border-box;
+            z-index: 99999;
+        }
+
+        .navbar-brand-2000 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .navbar-brand-2000 img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .navbar-buttons-2000 {
+            display: flex;
+            gap: 6px;
+        }
+
+        /* Округлые глянцевые кнопки в шапке */
+        .nav-btn-2000 {
+            background: linear-gradient(to bottom, #ffffff 0%, #cedce7 100%);
+            color: #0e386a;
+            border: 1px solid #7ba4cf;
+            border-radius: 12px;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .nav-btn-2000:hover {
+            background: linear-gradient(to bottom, #ffd659 0%, #ffbe1a 100%); /* Оранжевый глянец */
+            color: #000;
+            border-color: #d99f00;
+        }
+
+        .nav-btn-2000.active {
+            background: linear-gradient(to bottom, #ff9d00 0%, #ff6c00 100%);
+            color: #fff;
+            border-color: #b34a00;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+
+        /* ==========================================
+           СТИЛИ КОНТЕНТА (ПО МАКЕТУ ИЗ СКРИНШОТА)
+           ========================================== */
+        
+        /* Центральное серое окно-подложка */
+        .main-window-2000 {
+            background-color: #bdc3c7;
+            border: 3px solid #7f8c8d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: 'Tahoma', Arial, sans-serif;
+        }
+
+        /* Белый заголовок с CD-дисками по бокам */
+        .page-header-2000 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: #ffffff;
+            border: 1px solid #95a5a6;
+            padding: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .page-header-2000 h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .page-header-2000 p {
+            color: #7f8c8d;
+            font-size: 11px;
+            margin: 3px 0 0 0;
+        }
+
+        .cd-icon {
+            font-size: 24px;
+            user-select: none;
+        }
+
+        /* Центрирование контента */
+        .meme-content-layout-2000 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Зелёная карточка под стиль карточек из макета image_348366.jpg */
+        .glossy-meme-page-card {
+            background: #76ba70;
+            border: 1px solid #5fa259;
+            border-radius: 14px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255,255,255,0.4);
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .glossy-card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        /* Серое поле [JPEG] для фото мема */
+        .glossy-image-container-2000 {
+            background: #d9d9d9;
+            border: 1px solid #b0b0b0;
+            border-radius: 4px;
+            width: 100%;
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-size: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .glossy-image-container-2000 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Белое текстовое поле внутри карточки */
+        .glossy-text-container-2000 {
+            background: #ffffff;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            color: #333333;
+            font-size: 13px;
+            line-height: 1.5;
+            text-align: left;
+            margin-bottom: 15px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Кнопка "Back to 2000" для возврата назад */
+        .glossy-action-btn-2000 {
+            background: #ffffff;
+            color: #333333;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            padding: 6px 20px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: background 0.1s ease;
+        }
+
+        .glossy-action-btn-2000:hover {
+            background: #f3f3f3;
+        }
+    </style>
+</head>
+<body class="era-2000s-body">
+
+    <nav class="top-navbar-2000">
+        <div class="navbar-brand-2000">
+            <img src="img/uwu.png" alt="icon"> 
+            <span>MemeNavigator_2000</span>
+        </div>
+        <div class="navbar-buttons-2000">
+            <button class="nav-btn-2000" onclick="location.href='index.html'">Main Page</button>
+            <button class="nav-btn-2000" onclick="location.href='1990.html'">1990</button>
+            <button class="nav-btn-2000 active" onclick="location.href='2000.html'">2000</button>
+            <button class="nav-btn-2000" onclick="location.href='2010.html'">2010</button>
+            <button class="nav-btn-2000" onclick="location.href='2020.html'">2020</button>
+        </div>
+    </nav>
+
+    <div class="main-window-2000">
+        
+        <div class="page-header-2000">
+            <span class="cd-icon">💿</span>
+            <div>
+                <h2>ЭПОХА FLASH-АНИМАЦИИ И WEB 2.0: 2000-е</h2>
+                <p>Время раннего YouTube, забавных видеороликов, демотиваторов и первых вирусных хитов!</p> 
+            </div>
+            <span class="cd-icon">💿</span>
+        </div>
+
+        <div class="meme-content-layout-2000">
+            
+            <div class="glossy-meme-page-card">
+                
+                <div class="glossy-card-title">UwU</div>
+                
+                <div class="glossy-image-container-2000">
+                    <img src="img/uwu.png" alt="[JPEG]">
+                </div>
+
+                <div class="glossy-text-container-2000">
+                    <p><strong>UwU</strong> — емотикон, що позначає розчулення або замилування. Символи <em>u</em> зображують очі, а символ <em>w</em> - рот.</p> Емотикон uwu часто використовується для позначення милоти (kawaii), щастя або ніжності. Надмірне використання цього емотикона також може навмисно дратувати співрозмовника. Особливо популярний він у фендомі фурі.
+
+                    Існує також більш здивований і подекуди двозначний варіант — owo (також записується як OwO; теж пов'язаний із фендомом фурі). Він може виражати милоту, а також цікавість і здивування (часто як реакція на щось незвичне: «що це таке?»).
+
+                    Популярності owo набув у 2018 році. На відміну від uwu, літери o тут позначають розплющені очі. Іноді цей емотикон також використовують для тролінгу.
+
+                    Ще один варіант — TwT, який часто символізує плач. Кожна літера T зображує заплющене око, з якого течуть сльози.
+
+                    Відомо, що емотикон uwu існував щонайменше з 11 квітня 2000 року, коли художник-фурі Гіслейн Дельєр використав його в публікації на сайті фурі-арту VCL (Vixen Controlled Library).
+
+                    Інший ранній приклад використання цього слова зустрічається в аніме-фанфіку 2005 року. Походження терміна невідоме, хоча багато хто вважає, що він з'явився в інтернет-чатах.
+
+                    До 2014 року емотикон поширився інтернетом, зокрема на Tumblr, і став частиною інтернет-субкультури.
+
+                    Слово uwu включено до спостережного словника Королівської академії іспанської мови, де воно визначається як «емотикон, що використовується для вираження щастя або ніжності».
+
+ 
+                </div>
+
+                <button class="glossy-action-btn-2000" onclick="location.href='2000.html'">
+                    Back to 2000
+                </button>
+                
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

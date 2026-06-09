@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Desktop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="top-navbar">
+        <div class="navbar-brand">
+            <img src="https://win98icons.alexmeub.com/icons/png/network_internet_connection_pieces-2.png" alt="net" class="nav-icon">
+            <span>MEME_NAVIGATOR</span>
+        </div>
+        <div class="navbar-buttons">
+            <button class="nav-btn active" onclick="location.href='index.html'">Main Page</button>
+            <button class="nav-btn" onclick="location.href='1990.html'">1990</button>
+            <button class="nav-btn" onclick="location.href='2000.html'">2000</button>
+            <button class="nav-btn" onclick="location.href='2010.html'">2010</button>
+            <button class="nav-btn" onclick="location.href='2020.html'">2020</button>
+        </div>
+    </nav>
+
+    <div class="meme-container draggable-window">
+        
+        <header class="window-header">
+            <div class="title-bar" id="windowHeader">
+                <div class="title-text">
+                    <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" alt="icon" class="title-icon">
+                    <span>Meme_Desktop.exe</span>
+                </div>
+                <div class="title-controls">
+                    <button class="control-btn">_</button>
+                    <button class="control-btn">🗖</button>
+                    <button class="control-btn close-btn">X</button>
+                </div>
+            </div>
+            
+            <nav class="menu-bar">
+                <span class="menu-item"><u>F</u>ile</span>
+                <span class="menu-item"><u>E</u>dit</span>
+                <span class="menu-item"><u>V</u>iew</span>
+                <span class="menu-item"><u>H</u>elp</span>
+            </nav>
+        </header>
+
+        <main class="welcome-container">
+            <h2 class="rainbow-text">Ласкаво просимо до Мем-Архіву :D</h2>
+
+            <div class="site-description">
+                <h3>О проекте / Описание сайта</h3>
+                <p>
+                    Добро пожаловать в виртуальный музей интернет-культуры! Этот сайт создан для того, чтобы 
+                    провести вас сквозь эпохи становления цифрового юмора. Здесь вы сможете окунуться в ностальгию 
+                    изучая, как трансформировались мемы: от текстовых шуток 1990-х и безумного визуального стиля 2000-х 
+                    до золотой эры мемов 2010-х годов. Используйте верхнее меню, чтобы путешествовать во времени!
+                </p>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const windowElement = document.querySelector('.draggable-window');
+        const headerElement = document.getElementById('windowHeader');
+
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+
+        const startDrag = (e) => {
+            if (e.target.closest('.title-controls')) return;
+            isDragging = true;
+            
+            const pageX = e.type === 'touchstart' ? e.touches[0].pageX : e.pageX;
+            const pageY = e.type === 'touchstart' ? e.touches[0].pageY : e.pageY;
+
+            startX = pageX;
+            startY = pageY;
+
+            const rect = windowElement.getBoundingClientRect();
+            initialX = rect.left;
+            initialY = rect.top;
+
+            windowElement.style.position = 'absolute';
+            windowElement.style.top = initialY + 'px';
+            windowElement.style.left = initialX + 'px';
+            windowElement.style.margin = '0';
+
+            document.body.style.userSelect = 'none';
+        };
+
+        const doDrag = (e) => {
+            if (!isDragging) return;
+
+            const pageX = e.type === 'touchmove' ? e.touches[0].pageX : e.pageX;
+            const pageY = e.type === 'touchmove' ? e.touches[0].pageY : e.pageY;
+
+            const deltaX = pageX - startX;
+            const deltaY = pageY - startY;
+
+            windowElement.style.left = (initialX + deltaX) + 'px';
+            windowElement.style.top = (initialY + deltaY) + 'px';
+        };
+
+        const stopDrag = () => {
+            isDragging = false;
+            document.body.style.userSelect = 'auto';
+        };
+
+        headerElement.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', doDrag);
+        document.addEventListener('mouseup', stopDrag);
+
+        headerElement.addEventListener('touchstart', startDrag, { passive: true });
+        document.addEventListener('touchmove', doDrag, { passive: false });
+        document.addEventListener('touchend', stopDrag);
+    </script>
+
+</body>
+</html>
